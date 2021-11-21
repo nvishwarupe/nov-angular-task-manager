@@ -1,0 +1,29 @@
+
+<nav style="background: lightblue;"  >
+    <!-- <a class="navbar-brand" href="#">TBCInc</a> -->
+    <img src="../assets/tbc-logo.png">
+    
+  </nav>
+  
+
+<div>
+<router-outlet></router-outlet>
+</div>
+
+<!-- Footer -->
+<footer style="background: lightblue;" class="page-footer font-small blue footer ">
+    <!-- Copyright -->
+    <div class="footer-copyright text-left py-3"  >© 2021 Copyright :
+      <a href="https://tbcinc.com/"> TBCInc.com</a>            
+      
+      <div style = "float: right;" *ngIf = "isUserLoggedIn()">
+      <button style= "margin-right: 20px; margin-bottom = 30px; " id="logout-id"  (click)="logout()">Log Out</button>
+      </div>
+    </div>
+    
+        
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+   
+

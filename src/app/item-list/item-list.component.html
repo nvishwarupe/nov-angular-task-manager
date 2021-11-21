@@ -1,0 +1,103 @@
+<div class="main-container">
+<div *ngIf ="!projectListSelected">
+<h3> Task List</h3>
+</div>
+<div *ngIf ="projectListSelected">
+    <h3> Project List</h3>
+ </div>
+    
+<div  class="scroll-area" >
+	<div>
+		
+			
+		<input type = text id="title-add" name="titleText" [(ngModel)] = "searchTitleText" > 
+		&nbsp;
+		<input type="checkbox" id="filter-id" name="filter" value="true" [(ngModel)] = "filterModel">
+		<label for="filter-id">  filter </label>
+		&nbsp;
+		<input type="checkbox" id="done-id" name="done" value="true" (click)="onCheckBoxDoneChange($event)">
+		<label for="done-id">  done </label>
+		&nbsp;
+		<input type="checkbox" id="project-id" name="projectListSelected" value="false" [(ngModel)] = "projectListSelected" >
+		<label for="project-id">  project</label>
+		
+	  
+	</div>
+
+
+
+
+	<div *ngIf = "projectListSelected">
+		  
+		<div *ngFor="let task of tasks | title:searchTitleText:filterModel | done: doneFlag ">
+					<div *ngIf ="task.isProject === true">
+					 P :	{{task.id}}  {{task.title}}  
+					</div>
+
+			<div *ngIf = "task.isProject === true">
+
+						<div *ngFor="let taskitem of getAllTasksForAProject(task.id) | title:searchTitleText:filterModel  | done: doneFlag"> 
+
+						<div class= "space" *ngIf = "taskitem.isProject === false && taskitem.parent === task.id" >
+			
+							T :	{{taskitem.id}}  {{taskitem.title}} 
+						</div> 
+						</div>
+				</div>
+
+			</div>
+
+	 <!-- print task with no parents --> 
+	 <!-- this is not needed	
+	 <div>
+			<BR>
+			Tasks with no parents: 
+		</div>   
+		<div *ngFor="let item of items | title:searchTitleText:filterModel | done: doneFlag">
+					<div *ngIf ="item.parent === '-1' && item.project === false">
+						{{item.id}}  {{item.title}}  
+					</div>
+		</div>
+
+	-->
+	 
+	</div>
+
+		
+	<div *ngIf = "!projectListSelected">
+
+	
+	 <div *ngFor="let task of tasks | title:searchTitleText:filterModel | done: doneFlag ">
+		<div *ngIf ="task.isProject === false ">
+			T : {{task.id}}   {{task.title}}  
+		</div>
+	</div>
+
+	</div>
+
+</div>
+        
+<div>
+
+<div >
+    <button  (click)=  addTaskInList(searchedValue)> Add Task</button>
+    <input type = text id="title-search" name="titleText" [(ngModel)]="searchedValue"> 
+    
+    <button  (click)= "startEditing()" > EDIT</button>
+    <button (click)= "deleteTask()"> DELETE</button>
+   
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+
+
+<h3>Update the Task</h3>
+
+
+
+<div *ngIf="task != undefined">
+  <div >
+     <label for="Title">Title :   </label> 
+    <input type="text" [(ngModel)]="task.title" placeholder="Title"> Id  : {{task.id}}
+</div>
+  
+  <div class="row  ">  
+    <div class="col">
+            <div >
+                <label for="Done"> Done :   </label> 
+            
+                <input type="checkbox" [(ngModel)]="task.done" placeholder="Done">
+            </div> 
+            <div >
+                <label for="IsProject"> IsProject  :   </label> 
+            
+                <input type="checkbox" [(ngModel)]="task.isProject" placeholder="IsProject">
+            </div>
+
+            <div  >
+              Parent:  
+              <select [(ngModel)]="task.parent" >
+               <option value="undefined" selected disabled>Select option</option>
+               <option value="task.parent" selected disabled> {{task.parent}}</option>
+             
+             <option *ngFor="let parent of projects" [ngValue]="parent.id">{{parent.id}} - {{parent.title}}</option>
+             </select>  
+           </div>
+             
+            
+            <div >
+               <label for="when"> When:    </label> 
+t
+                <input type="time" [(ngModel)]="task.when" placeholder="When">
+            </div>
+            <div>
+              <label for="Deadline"> Deadline:    </label> 
+
+                <input type="Date" [(ngModel)]="task.deadline" placeholder="Deadline">
+            </div>
+            
+    </div>  
+    <div class="col">
+            
+      <div class="col">
+          <label class="row" for="Details"> Details:    </label> 
+          <input type="textarea"  class="rows"  rows="4" [(ngModel)]="task.details" placeholder="Details">
+      </div>
+    </div>
+    
+  </div>
+
+  
+ 
+ 
+  <div style="margin-top: 20px;">
+    <button class="btn btn-outline-primary"  id="button-id" (click)="updateTask()">Save</button>    
+    <button class="btn btn-outline-secondary " (click)="cancelUpdate()">Cancel</button>
+  </div>
+
+
+</div>

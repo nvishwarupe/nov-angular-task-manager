@@ -1,0 +1,24 @@
+.space {
+    padding:.3em .5em .1em 2em;
+
+}
+
+.main-container {
+ min-height: relative;  /* will cover the 100% of viewport 100vh */
+ overflow: hidden;
+ display: block;
+ position: relative;
+ padding-bottom: 100px; /* height of your footer */
+}
+
+.scroll-area {
+    overflow-style: auto;
+    position: relative;
+}
+
+.button-bar {
+    
+    position: fixed;
+	bottom : 0;
+	
+}
